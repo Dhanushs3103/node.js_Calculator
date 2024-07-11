@@ -1,5 +1,5 @@
 // imports - Native-Modules
-const { randomBytes } = await import("node:crypto");
+const { randomInt } = await import("node:crypto");
 
 // getting the data from command line,
 let data = process.argv;
@@ -86,28 +86,46 @@ function cos(num) {
   }
 }
 
+// function to generate random number,
+function random (num1,num2) {
+  if (num2 === undefined) { // checking if num2 is present or not, if not then the below logic applies.
+    num2 = num1;
+    num1 = 0;
+  }
+  randomInt(Number(num1), Number(num2), (err, randomInt) => {
+  if (err) throw err;
+  console.log('Random Integer:', randomInt);
+});
+}
+
+// switch case changes operations based on operands:
 switch (operation) {
   case "add":
-    add(first_int, second_int);
+    add(first_int, second_int)
     break;
   case "sub":
-    sub(first_int, second_int);
+    sub(first_int, second_int)
     break;
   case "multi":
-    multi(first_int, second_int);
+    multi(first_int, second_int)
     break;
   case "divide":
-    divide(first_int, second_int);
+    divide(first_int, second_int)
     break;
   case "tan":
-    tan(first_int);
+    tan(first_int)
     break;
   case "sin":
-    sin(first_int);
+    sin(first_int)
     break;
   case "cos":
-    cos(first_int);
+    cos(first_int)
+    break;
+  case "random":
+    random(first_int,second_int);
     break;
   default:
     console.log("Invalid operation");
 }
+
+/*Thank You */
